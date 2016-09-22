@@ -17,13 +17,10 @@ class MontyAI():
 		if self.isMontyRequest(string):
 			request = string.partition(' ')[2]
 			if self.isJoke(request):
-				print("Joke!!!")
 				self.getJoke()
 			if self.isMath(request):
-				print("Math!!!")
 				self.doMath(request)
 			if self.isEmail(request):
-				print("Email!!!")
 				self.doEmail(request)
 
 	def isMontyRequest(self,string):
@@ -62,7 +59,6 @@ class MontyAI():
 		for i in words[count+1:]:
 			arg2 = arg2 + w2n.word_to_num(i)
 		value = 0
-		print(operator)
 		if operator == "plus":
 			value = arg1 + arg2
 		if operator == "times":
