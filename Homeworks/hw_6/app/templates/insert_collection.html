@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a href=index>Back to Main Page</a>
+        <h3 class="text-muted">
+      {% if database %}
+      A database is present. Please insert a new collection by uploading a BibTex file with the form below.
+      {% else %}
+      No database present, one will be created for you
+      {% endif %}
+      </h3>
+      </div>
+      <hr/>
+      <div>
+      
+      <form action="upload" method="post" enctype="multipart/form-data">
+        Collection Name: <input type="file" name="file"><br /><br />
+        <input type="submit" value="Upload!">
+      </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a href=index>Back to Main Page</a>
+        <h3 class="text-muted">
+      {% if database %}
+      A database is present. You can query it with the form below.
+      {% else %}
+      No database present.  Click the link above to return to the main page.
+      {% endif %}
+      </h3>
+      </div>
+      <hr/>
+      <div>
+      {% if database %}
+      Use SQL query syntax to enter the query string that follows the "WHERE".<BR/>
+      Column names are "ref_tag", "author_list", "journal", "volume" (integer), "pages, "year" (integer), "title", and "collection".<BR/>
+      To use wildcards, use "LIKE" and employ the "%" (percent symbol) as multiple character wildcard and "_" (underscore) as single character wildcard.<BR/>
+      Make sure to explicitly put strings in quotes.<BR/><HR/>
+      {% endif %}
+      </div>
+      <div>
+        <form action="query" method="post" enctype="multipart/form-data">
+          Query String: <input size=150 type="text" name="querystring"><br /><br />
+          <input type="submit" value="Query!">
+        </form>
+      </div>
+      <hr/>
+      <div>
+          <ul>
+          {% for result in results %}
+          <li>Reference Tag: {{result['ref_id']}}</li>
+               Author List: {{result['author_list']}}
+          <BR/>Journal: {{result['journal']}}
+          <BR/>Volume: {{result['volume']}}
+          <BR/>Pages: {{result['pages']}}
+          <BR/>Year: {{result['year']}}
+          <BR/>Title: {{result['title']}}
+          <BR/>Collection: {{result['collection']}}
+          <BR/>
+          <BR/>
+          {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </body>
+</html>

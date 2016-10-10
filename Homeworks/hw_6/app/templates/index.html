@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a href=insert_collection>Insert a Collection</a> -- <a href=query>Run a Query</a> 
+        <h3 class="text-muted">
+      {% if database %}
+      A database is present.  These are your available collections:
+      {% else %}
+      No database present, one will be created for you
+      {% endif %}
+
+        </h3>
+      </div>
+      <div>
+      
+      <hr/>
+          <ul>
+          {% for collection in collections %}
+          <li>{{collection}}</li>
+          {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </body>
+</html>
